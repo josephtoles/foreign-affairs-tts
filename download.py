@@ -13,22 +13,11 @@ with open(LOGIN_FILE_NAME, 'r') as f:
 #session
 r = requests.Session()
 
-#get form
+#log in (requires foreign affairs account)
 resp = r.get('https://www.foreignaffairs.com/user?op=lo')
 html = resp.raw.read()
 soup = BeautifulSoup(html)
-tag = soup.find(id='content-area')
-tag2 = tag.find(type='hidden')
-form_build_id = tag2['id']
-print form_build_id
-
-#with open('temp.html', 'w') as f:
-#	f.write(html)
-#	f.close()
-
-
-"""
-form_build_id = 
+form_build_id = soup.find(id='content-area').find(type='hidden')['id']
 
 credentials = {
 	'name': personal_info['email'],
@@ -39,4 +28,10 @@ credentials = {
 }
 
 login_resp = r.post('https://www.foreignaffairs.com/user?destination=home', data=credentials)
-"""
+
+resp = r.get('http://www.foreignaffairs.com/articles/141353/halil-karaveli/cold-turkey')
+html = resp.raw.read()
+
+with open('temp.html', 'w') as f:
+	f.write(html)
+	f.close()

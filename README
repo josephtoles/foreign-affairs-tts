@@ -1,0 +1,1 @@
+Using this program requires a paid Foreign Affairs account. Once you have purchased one, create a file in the root folder called "credentials" with a single line written {"email": "<your email here>", "password": "<your password here>"}.
