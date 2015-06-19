@@ -1,4 +1,6 @@
 *.pyc
 *~
 *.swp
+output_temp
+temp.html
 credentials
